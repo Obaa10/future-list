@@ -14,11 +14,6 @@ Future List is a powerful Flutter package that simplifies the process of display
 
 - **Flexible Integration**: Integrate Future List into your existing Flutter projects with ease, thanks to its intuitive and straightforward API.
 
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
 ## How to use
 
 Add the following line to your `pubspec.yaml` file:
