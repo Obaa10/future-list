@@ -14,50 +14,78 @@ Future List is a powerful Flutter package that simplifies the process of display
 
 - **Flexible Integration**: Integrate Future List into your existing Flutter projects with ease, thanks to its intuitive and straightforward API.
 
-## Installation
+
+## Features
+
+TODO: List what your package can do. Maybe include images, gifs, or videos.
+
+## How to use
 
 Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
   future_list: ^1.0.0
-  ```
-Then, run the command:
-```puml
-flutter pub get
 ```
-For detailed installation instructions, check out the installation guide on pub.dev.
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-Import the Future List package:
 
 ```dart
-import 'package:future_list/future_list.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 ```
-Instantiate a FutureList widget and provide the required parameters:
-``
-FutureList( 
-  url: 'https://api.example.com/data',
-  itemBuilder: (data) {
-    // Build your list item widget here
-    return MyListItem(data: data);
-  },
-)
-``
-For more detailed usage instructions and examples, refer to the documentation on pub.dev.
 
-## Additional information
+## Example
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+  FutureListBuilder<RealEstate>(
+    url: "https://example.com/get/data",
+    httpMethod: HttpMethod.get,
+    converter: (json) {
+     //Function to convert from json to RealEstate Object.
+    },
+    itemBuilder: (data) {
+      //Function to return card widget for the data RealEstate.
+    },
+    dataPath: ['data'], //The data path in the json response body.
+  )
+```
+In this example we get data from https://example.com/get/data url 
+with Http get method. <br>
+In this example the response body should be 
+```json
+{
+  "data": [
+    "item1",
+    "item2",
+    ....
+  ]
+}
+```
+## Properties
+
+| property | description | default
+|----------| ----------- | -------
+| 'url ' | the url of the data | required
+| httpMethod | http request method instance of HttpMethod | required
+| converter | function to convert from json to object | required
+| itemBuilder | function to get card widget from object | required
+| dataPath | path of the data list in the response body | required
+| itemBuilder | function to get card widget from object | required| 
+| header | json object | null| 
+| body | json object will use only with getWithBody and post HttpMethod  | null| 
+| scrollDirection | instance of Axis | Axis.vertical | 
+| shimmerBuilder | function return the shimmer card | null | 
+| shimmerCardsCount | number of shimmer card when loading | 3 | 
+| onError | callback function with error message <br> (String) => void | null | 
+| callBack | callback function with list of object responses  <br> (List<T>) => void | null | 
+| pagination | support pagination  | false | 
+| skipKey | the skip key which will be use in the header  | skip | 
+| limitKey | the limit key which will be use in the header  | limit | 
+| skip | the skip value which will be use in the header  | 1 | 
+| limit | the limit value which will be use in the header  | 6 | 
+| successStatusCode | the success status code in the response  | 200 | 
+| countPath | path of the total count number in the response body | null
+| scrollPhysics | scroll physics for list the list view | BouncingScrollPhysics()
+
+
+## If you need any features suggest #
+...
