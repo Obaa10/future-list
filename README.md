@@ -55,8 +55,7 @@ In this example the response body should be
 {
   "data": [
     "item1",
-    "item2",
-    ....
+    "item2"
   ]
 }
 ```
