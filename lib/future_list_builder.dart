@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:future_list_builder/util.dart';
+import 'package:future_list/util.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 

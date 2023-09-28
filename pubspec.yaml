@@ -1,7 +1,6 @@
-name: future_list_builder
+name: future_list
 description: Effortlessly display paginated lists from any URL with Future List:\ Explore shimmer effects, advanced features, and seamless pagination for captivating app experiences.
-version: 0.0.1
-authors: Obada Al-Maleh<obada.maleh@gmail.com>
+version: 1.0.0
 homepage: https://github.com/Obaa10/future-list
 
 environment:
@@ -11,13 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^1.1.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  http:
-  shimmer:
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

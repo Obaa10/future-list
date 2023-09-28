@@ -1,5 +1,3 @@
-import 'package:future_list_builder/future_list_builder.dart';
-
 dynamic getValueFromJson(dynamic jsonObject, List<String> propertyPath) {
   dynamic value = jsonObject;
 
