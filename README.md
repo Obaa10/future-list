@@ -63,7 +63,7 @@ In this example the response body should be
 
 | property | description | default
 |----------| ----------- | -------
-| 'url ' | the url of the data | required
+| url  | the url of the data | required
 | httpMethod | http request method instance of HttpMethod | required
 | converter | function to convert from json to object | required
 | itemBuilder | function to get card widget from object | required
