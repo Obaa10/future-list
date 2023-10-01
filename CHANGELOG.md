@@ -6,3 +6,9 @@ Initial Release
 
 Pub issue fixed
 
+
+## 1.0.2
+
+Pub issue fixed
+Update docs
+Add examples
