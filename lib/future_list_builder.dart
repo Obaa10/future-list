@@ -76,6 +76,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilderT<T>> {
   List<T> items = [];
   int? totalCount;
   int page = 1;
+  bool _loading = false;
   var scrollController = ScrollController();
 
   @override
@@ -90,7 +91,6 @@ class _FutureListBuilderState<T> extends State<FutureListBuilderT<T>> {
     return FutureBuilder(
         future: getResponse(),
         builder: (context, snapshot) {
-
           // done
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.data?.statusCode ==
@@ -106,6 +106,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilderT<T>> {
 
           // loading
           if (loading(snapshot) != null) return loading(snapshot)!;
+          _loading = snapshot.connectionState == ConnectionState.waiting;
 
           //Error
           if (snapshot.hasError ||
@@ -197,7 +198,12 @@ class _FutureListBuilderState<T> extends State<FutureListBuilderT<T>> {
         itemBuilder: (context, index) => widget.shimmerBuilder!(),
       );
     } else {
-      return const CircularProgressIndicator();
+      return const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircularProgressIndicator(),
+        ],
+      );
     }
   }
 
@@ -237,11 +243,9 @@ class _FutureListBuilderState<T> extends State<FutureListBuilderT<T>> {
   String getUrl() {
     var url = widget.url;
     if (url.contains('?')) {
-      url =
-          '$url&${widget.skipKey}=$page&${widget.limitKey}=${widget.limit}';
+      url = '$url&${widget.skipKey}=$page&${widget.limitKey}=${widget.limit}';
     } else {
-      url =
-          '$url?${widget.skipKey}=$page&${widget.limitKey}=${widget.limit}';
+      url = '$url?${widget.skipKey}=$page&${widget.limitKey}=${widget.limit}';
     }
     return url;
   }
@@ -255,7 +259,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilderT<T>> {
             page += 1;
           });
         }
-      } else {
+      } else if (!_loading) {
         setState(() {
           page += 1;
         });
