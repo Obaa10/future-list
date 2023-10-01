@@ -12,3 +12,8 @@ Pub issue fixed
 Pub issue fixed
 Update docs
 Add examples
+
+
+## 1.0.3
+
+Update docs
