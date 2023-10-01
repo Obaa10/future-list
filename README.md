@@ -32,14 +32,14 @@ import 'package:future_list/future_list_builder.dart';
 
 ### Simple example
 ```dart
-  FutureListBuilder<RealEstate>(
+  FutureListBuilder<Book>(
     url: "https://example.com/get/data",
     httpMethod: HttpMethod.get,
     converter: (json) {
-     //Function to convert from json to RealEstate Object.
+     //Function to convert from json to Book Object.
     },
     itemBuilder: (data) {
-      //Function to return card widget for the data RealEstate.
+      //Function to return card widget for the data Book.
     },
     dataPath: ['data'], //The data path in the json response body.
     shimmerBuilder: () => ShimmerCard(width: 200,height:100)
