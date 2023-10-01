@@ -25,11 +25,12 @@ dependencies:
 
 
 ```dart
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:future_list/future_list_builder.dart';
 ```
 
-## Example
+## Examples
 
+### Simple example
 ```dart
   FutureListBuilder<RealEstate>(
     url: "https://example.com/get/data",
@@ -41,10 +42,12 @@ import 'package:fluttertoast/fluttertoast.dart';
       //Function to return card widget for the data RealEstate.
     },
     dataPath: ['data'], //The data path in the json response body.
+    shimmerBuilder: () => ShimmerCard(width: 200,height:100)
   )
 ```
-In this example we get data from https://example.com/get/data url 
+In this example we get data from https://example.com/get/data 
 with Http get method. <br>
+and we user the build in ShimmerCard you can read more about it in the docs, <br>
 In this example the response body should be 
 ```json
 {
@@ -54,8 +57,75 @@ In this example the response body should be
   ]
 }
 ```
-## Properties
 
+
+### Full example
+In this example we will get a list of locations we will use: location object, shimmer effect and pagination <br>
+
+- The location object class
+```dart
+class Location {
+  String textLocation;
+  String id;
+
+  Location({
+    required this.textLocation,
+    required this.id,
+  });
+
+  factory Location.fromJson(Map<String, dynamic> json) => Location(
+    textLocation: json["text_location"],
+    id: json["_id"],
+  );
+}
+```
+- The Location card widget
+```dart
+  Widget LocationCard(Location location) {
+  return Container(
+    padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+    margin: const EdgeInsets.symmetric(horizontal: 10.0),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+    child: Row(
+      children: [
+        Text(location.textLocation),
+        const SizedBox(width: 8.0),
+      ],
+    ),
+  );
+}
+```
+- The FutureList widget
+```dart
+  FutureListBuilder<Location>(
+    url: "https://example.com/get/locations",
+    httpMethod: HttpMethod.get,
+    converter: Location.fromJson,
+    itemBuilder: LocationCard,
+    dataPath: ['data'], //The data path in the json response body.
+    countPath: ['total_count'], //The total count path in the json response body.
+    shimmerBuilder: () => ShimmerCard(width: 1,height:100,fillWidth: true),
+    pagination: true,
+    onError: (errorMessage){
+      print("Error: $errorMessage");  
+    },
+  )
+```
+In this example the response body should be
+```json
+{
+  "data": [
+    "item1",
+    "item2"
+  ],
+  "total_count": 20
+}
+```
+
+
+
+## Properties
+### FutureListBuilder
 | property | description | default
 |----------| ----------- | -------
 | url  | the url of the data | required
@@ -79,6 +149,13 @@ In this example the response body should be
 | successStatusCode | the success status code in the response  | 200 | 
 | countPath | path of the total count number in the response body | null
 | scrollPhysics | scroll physics for list the list view | BouncingScrollPhysics()
+
+### ShimmerCard
+| property | description | default
+|----------| ----------- | -------
+| width  | shimmer card width | required
+| height |  shimmer card height | required
+| fillWidth | if set true shimmer card will expand to fit screen width | false
 
 
 ## If you need any features suggest #

@@ -1,12 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:future_list/util.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
-class FutureListBuilderT<T> extends StatefulWidget {
-  const FutureListBuilderT({
+class FutureListBuilder<T> extends StatefulWidget {
+  const FutureListBuilder({
     super.key,
     required this.url,
     required this.httpMethod,
@@ -24,7 +23,7 @@ class FutureListBuilderT<T> extends StatefulWidget {
     this.pagination = false,
     this.skipKey = "skip",
     this.limitKey = "limit",
-    this.skip = 1,
+    this.skip = 0,
     this.limit = 6,
     this.successStatusCode = 200,
     required this.dataPath,
@@ -69,10 +68,10 @@ class FutureListBuilderT<T> extends StatefulWidget {
   final int limit;
 
   @override
-  State<FutureListBuilderT<T>> createState() => _FutureListBuilderState<T>();
+  State<FutureListBuilder<T>> createState() => _FutureListBuilderState<T>();
 }
 
-class _FutureListBuilderState<T> extends State<FutureListBuilderT<T>> {
+class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
   List<T> items = [];
   int? totalCount;
   int page = 1;
