@@ -5,10 +5,8 @@ import 'package:future_list/util.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
-
-
-class FutureListBuilder<T> extends StatefulWidget {
-  const FutureListBuilder({
+class FutureListBuilderT<T> extends StatefulWidget {
+  const FutureListBuilderT({
     super.key,
     required this.url,
     required this.httpMethod,
@@ -70,12 +68,11 @@ class FutureListBuilder<T> extends StatefulWidget {
   final int skip;
   final int limit;
 
-
   @override
-  State<FutureListBuilder<T>> createState() => _FutureListBuilderState<T>();
+  State<FutureListBuilderT<T>> createState() => _FutureListBuilderState<T>();
 }
 
-class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
+class _FutureListBuilderState<T> extends State<FutureListBuilderT<T>> {
   List<T> items = [];
   int? totalCount;
   int page = 1;
@@ -93,8 +90,6 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
     return FutureBuilder(
         future: getResponse(),
         builder: (context, snapshot) {
-          // loading
-          loading(snapshot);
 
           // done
           if (snapshot.connectionState == ConnectionState.done) {
@@ -109,13 +104,16 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
             return createList();
           }
 
+          // loading
+          if (loading(snapshot) != null) return loading(snapshot)!;
+
           //Error
           if (snapshot.hasError ||
               snapshot.data == null ||
               snapshot.data?.statusCode != (widget.successStatusCode ?? 200)) {
             if (widget.onError != null) {
               return widget.onError!(
-                  snapshot.data?.toString() ?? snapshot.error.toString()) ??
+                      snapshot.data?.toString() ?? snapshot.error.toString()) ??
                   const SizedBox();
             }
           }
@@ -133,7 +131,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
       totalCount = widget.countGetter != null
           ? widget.countGetter!(snapshot.data?.body)
           : getValueFromJson(
-          jsonDecode(snapshot.data?.body), widget.countPath!);
+              jsonDecode(snapshot.data?.body), widget.countPath!);
     }
 
     items.addAll(data?.map((e) => widget.converter(e)).toList() ?? []);
@@ -141,7 +139,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
 
   Widget _listBuilder(
       {required int itemCount,
-        required Widget? Function(BuildContext, int) itemBuilder}) {
+      required Widget? Function(BuildContext, int) itemBuilder}) {
     return ListView.builder(
       itemCount: itemCount,
       itemBuilder: itemBuilder,
@@ -189,7 +187,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
     } else if (items.isNotEmpty) {
       return createList();
     }
-    return const SizedBox();
+    return null;
   }
 
   Widget loader() {
@@ -214,6 +212,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
   }
 
   Future<Response> _get() {
+    print("get url ${getUrl()}");
     return http.get(
       Uri.parse(getUrl()),
       headers: widget.header,
@@ -221,6 +220,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
   }
 
   Future<Response> _getWithBody() async {
+    print("get with body url ${getUrl()}");
     var request = http.Request('GET', Uri.parse(getUrl()));
     request.body = jsonEncode(widget.body);
     if (widget.header != null) request.headers.addAll(widget.header!);
@@ -229,6 +229,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
   }
 
   Future<Response> _post() {
+    print("post url ${getUrl()}");
     return http.post(Uri.parse(getUrl()),
         headers: widget.header, body: widget.body);
   }
@@ -237,10 +238,10 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
     var url = widget.url;
     if (url.contains('?')) {
       url =
-      '$url&${widget.skipKey}=${page * widget.skip}&${widget.limitKey}=${widget.limit}';
+          '$url&${widget.skipKey}=$page&${widget.limitKey}=${widget.limit}';
     } else {
       url =
-      '$url?${widget.skipKey}=${page * widget.skip}&${widget.limitKey}=${widget.limit}';
+          '$url?${widget.skipKey}=$page&${widget.limitKey}=${widget.limit}';
     }
     return url;
   }
@@ -262,3 +263,19 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
     }
   }
 }
+
+dynamic getValueFromJson(dynamic jsonObject, List<String> propertyPath) {
+  dynamic value = jsonObject;
+
+  for (var property in propertyPath) {
+    if (value is Map && value.containsKey(property)) {
+      value = value[property];
+    } else {
+      return null;
+    }
+  }
+
+  return value;
+}
+
+enum HttpMethod { get, post, getWithBody }
