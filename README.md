@@ -176,7 +176,7 @@ In this example the response body should be
 
 ## Screenshots
 
-<p float="left">
+<div style="display: flex; justify-content: center;">
 <figure>
 <img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_1.png" width="200">
 <figcaption>Fig.1 - Shimmer effect while get data.</figcaption>
@@ -189,7 +189,7 @@ In this example the response body should be
 <img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_3.png" width="200">
 <figcaption>Fig.1 - Shimmer effect while pagination.</figcaption>
 </figure>
-</p>
+</div>
 
 
 ## If you need any features suggest
