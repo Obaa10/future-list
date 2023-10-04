@@ -39,22 +39,18 @@ import 'package:future_list/future_list_builder.dart';
 ### Simple example
 
 ```dart
-  FutureListBuilder<Book>
-(
-url: "https://example.com/get/data",
-httpMethod: HttpMethod.get,
-converter: (json) {
-//Function to convert from json to Book Object.
-},
-itemBuilder: (data) {
-//Function to return card widget for the data Book.
-},
-dataPath: ['data'], //The data path in the json response body.
-shimmerBuilder: () => ShimmerCard(width: 200,height
-:
-100
-)
-)
+  FutureListBuilder<Book>(
+    url: "https://example.com/get/data",
+    httpMethod: HttpMethod.get,
+    converter: (json) {
+     //Function to convert from json to Book Object.
+    },
+    itemBuilder: (data) {
+     //Function to return card widget for the data Book.
+    },
+    dataPath: ['data'],  //The data path in the json response body.
+    shimmerBuilder: () => ShimmerCard(width: 200, height: 100),
+  )
 ```
 
 In this example we get data from https://example.com/get/data
