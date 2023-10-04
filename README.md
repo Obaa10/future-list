@@ -176,7 +176,9 @@ In this example the response body should be
 
 ## Screenshots
 
-[![Screen record](thumbnail_image_url)](https://github.com/Obaa10/future-list/media/screen_record.webm)
+![Waiting while get data](https://github.com/Obaa10/future-list/blob/main/media/screenshot_1.png)
+![Get data](https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png)
+![Pagination shimmer effect](https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png)
 
 ## If you need any features suggest
 
