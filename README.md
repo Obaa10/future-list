@@ -64,10 +64,7 @@ In this example the response body should be
 
 ```json
 {
-  "data": [
-    "item1",
-    "item2"
-  ]
+  "data": ["item1", "item2"]
 }
 ```
 
@@ -137,10 +134,7 @@ In this example the response body should be
 
 ```json
 {
-  "data": [
-    "item1",
-    "item2"
-  ],
+  "data": ["item1", "item2"],
   "total_count": 20
 }
 ```
@@ -149,45 +143,45 @@ In this example the response body should be
 
 ### FutureListBuilder
 
-| property | description                                                             | default
-|----------|-------------------------------------------------------------------------| -------
-| url  | the url of the data                                                     | required
-| httpMethod | http request method instance of HttpMethod                              | required
-| converter | function to convert from json to object                                 | required
-| itemBuilder | function to get card widget from object                                 | required
-| dataPath | path of the data list in the response body                              | required
-| itemBuilder | function to get card widget from object                                 | required| 
-| header | json object                                                             | null| 
-| body | json object will use only with getWithBody and post HttpMethod          | null| 
-| scrollDirection | instance of Axis                                                        | Axis.vertical | 
-| shimmerBuilder | function return the shimmer card                                        | null | 
-| shimmerCardsCount | number of shimmer card when loading                                     | 3 | 
-| paginationShimmerCardsCount | number of shimmer card with pagination                                  | 3 | 
-| onError | callback function with error message <br> (String) => void              | null | 
-| callBack | callback function with list of object responses  <br> (List<T>) => void | null | 
-| pagination | support pagination                                                      | false | 
-| skipKey | the skip key which will be use in the header                            | skip | 
-| limitKey | the limit key which will be use in the header                           | limit | 
-| skip | the skip value which will be use in the header                          | 1 | 
-| limit | the limit value which will be use in the header                         | 6 | 
-| successStatusCode | the success status code in the response                                 | 200 | 
-| countPath | path of the total count number in the response body                     | null
-| scrollPhysics | scroll physics for list the list view                                   | BouncingScrollPhysics()
+| property                    | description                                                            | default                 |
+| --------------------------- | ---------------------------------------------------------------------- | ----------------------- |
+| url                         | the url of the data                                                    | required                |
+| httpMethod                  | http request method instance of HttpMethod                             | required                |
+| converter                   | function to convert from json to object                                | required                |
+| itemBuilder                 | function to get card widget from object                                | required                |
+| dataPath                    | path of the data list in the response body                             | required                |
+| itemBuilder                 | function to get card widget from object                                | required                |
+| header                      | json object                                                            | null                    |
+| body                        | json object will use only with getWithBody and post HttpMethod         | null                    |
+| scrollDirection             | instance of Axis                                                       | Axis.vertical           |
+| shimmerBuilder              | function return the shimmer card                                       | null                    |
+| shimmerCardsCount           | number of shimmer card when loading                                    | 3                       |
+| paginationShimmerCardsCount | number of shimmer card with pagination                                 | 3                       |
+| onError                     | callback function with error message <br> (String) => void             | null                    |
+| callBack                    | callback function with list of object responses <br> (List<T>) => void | null                    |
+| pagination                  | support pagination                                                     | false                   |
+| skipKey                     | the skip key which will be use in the header                           | skip                    |
+| limitKey                    | the limit key which will be use in the header                          | limit                   |
+| skip                        | the skip value which will be use in the header                         | 1                       |
+| limit                       | the limit value which will be use in the header                        | 6                       |
+| successStatusCode           | the success status code in the response                                | 200                     |
+| countPath                   | path of the total count number in the response body                    | null                    |
+| scrollPhysics               | scroll physics for list the list view                                  | BouncingScrollPhysics() |
 
 ### ShimmerCard
 
-| property | description                                              | default
-|----------|----------------------------------------------------------| -------
-| width  | shimmer card width                                       | required
-| height | shimmer card height                                      | required
-| fillWidth | if set true shimmer card will expand to fit screen width | false
-| baseColor | base color                                               | Colors.grey
-| highlightColor | highlight color                                          | Colors.black12
+| property       | description                                              | default        |
+| -------------- | -------------------------------------------------------- | -------------- |
+| width          | shimmer card width                                       | required       |
+| height         | shimmer card height                                      | required       |
+| fillWidth      | if set true shimmer card will expand to fit screen width | false          |
+| baseColor      | base color                                               | Colors.grey    |
+| highlightColor | highlight color                                          | Colors.black12 |
 
-## Screenshots #
+## Screenshots
+
 [![Screen record](thumbnail_image_url)](https://github.com/Obaa10/future-list/media/screen_record.webm)
 
-
-## If you need any features suggest #
+## If you need any features suggest
 
 ...
