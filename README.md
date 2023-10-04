@@ -177,9 +177,18 @@ In this example the response body should be
 ## Screenshots
 
 <p float="left">
+<figure>
 <img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_1.png" width="200">
+<figcaption>Fig.1 - Shimmer effect while get data.</figcaption>
+</figure>
+<figure>
 <img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png" width="200">
+<figcaption>Fig.1 - Show result After get data.</figcaption>
+</figure>
+<figure>
 <img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_3.png" width="200">
+<figcaption>Fig.1 - Shimmer effect while pagination.</figcaption>
+</figure>
 </p>
 
 
