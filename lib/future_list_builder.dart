@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -18,6 +19,7 @@ class FutureListBuilder<T> extends StatefulWidget {
     this.scrollDirection = Axis.vertical,
     this.shimmerBuilder,
     this.shimmerCardsCount = 3,
+    this.paginationShimmerCardsCount = 3,
     this.onError,
     this.callBack,
     this.pagination = false,
@@ -52,9 +54,10 @@ class FutureListBuilder<T> extends StatefulWidget {
   final Axis scrollDirection;
   final ScrollPhysics scrollPhysics;
 
-  //Simmer
+  ///Simmer
   final Widget Function()? shimmerBuilder;
   final int shimmerCardsCount;
+  final int paginationShimmerCardsCount;
 
   //Call back..
   final Widget? Function(String?)? onError;
@@ -162,7 +165,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
     if (totalCount != null) {
       return _listBuilder(
           itemCount: page * widget.limit <= totalCount!
-              ? items.length + 4
+              ? items.length + widget.paginationShimmerCardsCount
               : items.length,
           itemBuilder: (context, index) {
             if (index >= items.length) {
@@ -217,7 +220,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
   }
 
   Future<Response> _get() {
-    print("get url ${getUrl()}");
+    log("get url ${getUrl()}");
     return http.get(
       Uri.parse(getUrl()),
       headers: widget.header,
@@ -225,7 +228,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
   }
 
   Future<Response> _getWithBody() async {
-    print("get with body url ${getUrl()}");
+    log("get with body url ${getUrl()}");
     var request = http.Request('GET', Uri.parse(getUrl()));
     request.body = jsonEncode(widget.body);
     if (widget.header != null) request.headers.addAll(widget.header!);
@@ -234,7 +237,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
   }
 
   Future<Response> _post() {
-    print("post url ${getUrl()}");
+    log("post url ${getUrl()}");
     return http.post(Uri.parse(getUrl()),
         headers: widget.header, body: widget.body);
   }

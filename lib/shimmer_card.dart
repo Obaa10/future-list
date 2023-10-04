@@ -7,12 +7,16 @@ class ShimmerCard extends StatelessWidget {
       required this.width,
       required this.height,
       this.orientation = Axis.vertical,
-      this.fillWidth = false});
+      this.fillWidth = false,
+      this.baseColor = Colors.grey,
+      this.highlightColor = Colors.black12});
 
   final double width;
   final double height;
   final bool fillWidth;
   final Axis orientation;
+  final Color baseColor;
+  final Color highlightColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +27,11 @@ class ShimmerCard extends StatelessWidget {
           vertical: orientation == Axis.vertical ? 25 : 8,
           horizontal: orientation == Axis.horizontal ? 12 : 8),
       child: Shimmer.fromColors(
-          baseColor: Colors.grey,
+          baseColor: baseColor,
           highlightColor: Colors.black12,
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.grey, borderRadius: BorderRadius.circular(25)),
+                color: baseColor, borderRadius: BorderRadius.circular(25)),
           )),
     );
   }
