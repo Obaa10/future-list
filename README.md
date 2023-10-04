@@ -176,9 +176,10 @@ In this example the response body should be
 
 ## Screenshots
 
-![Waiting while get data](https://github.com/Obaa10/future-list/blob/main/media/screenshot_1.png){: height="300"}
-![Get data](https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png)
-![Pagination shimmer effect](https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png)
+<img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_1.png" width="200">
+<img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png" width="200">
+<img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_3.png" width="200">
+
 
 ## If you need any features suggest
 
