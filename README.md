@@ -27,7 +27,7 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  future_list: ^1.0.2
+  future_list: ^1.0.4
 ```
 
 ```dart
@@ -176,7 +176,7 @@ In this example the response body should be
 
 ## Screenshots
 
-![Waiting while get data](https://github.com/Obaa10/future-list/blob/main/media/screenshot_1.png)
+![Waiting while get data](https://github.com/Obaa10/future-list/blob/main/media/screenshot_1.png){: height="300"}
 ![Get data](https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png)
 ![Pagination shimmer effect](https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png)
 
