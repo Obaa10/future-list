@@ -33,24 +33,24 @@ class FutureListBuilder<T> extends StatefulWidget {
     this.scrollPhysics = const BouncingScrollPhysics(),
   });
 
-  //Futures
+  ///Futures
   final String url;
   final HttpMethod httpMethod;
   final Map<String, String>? header;
   final Map<String, dynamic>? body;
   final int? successStatusCode;
 
-  //Response
+  ///Response
   final List<Map>? Function(Map)? dataGetter;
   final int? Function(Map)? countGetter;
 
-  //Converter
+  ///Converter
   final T Function(Map<String, dynamic>) converter;
   final List<String> dataPath;
   final List<String>? countPath;
   final Widget Function(T data) itemBuilder;
 
-  //List attributes
+  ///List attributes
   final Axis scrollDirection;
   final ScrollPhysics scrollPhysics;
 
@@ -59,11 +59,11 @@ class FutureListBuilder<T> extends StatefulWidget {
   final int shimmerCardsCount;
   final int paginationShimmerCardsCount;
 
-  //Call back..
+  ///Call back..
   final Widget? Function(String?)? onError;
   final void Function(List<T>)? callBack;
 
-  //Pagination
+  ///Pagination
   final bool pagination;
   final String skipKey;
   final String limitKey;
@@ -93,11 +93,11 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
     return FutureBuilder(
         future: getResponse(),
         builder: (context, snapshot) {
-          // done
+          /// done
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.data?.statusCode ==
                 (widget.successStatusCode ?? 200)) {
-              //Success
+              ///Success
               convertData(snapshot);
               return createList();
             }
@@ -106,11 +106,11 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
             return createList();
           }
 
-          // loading
+          /// loading
           if (loading(snapshot) != null) return loading(snapshot)!;
           _loading = snapshot.connectionState == ConnectionState.waiting;
 
-          //Error
+          ///Error
           if (snapshot.hasError ||
               snapshot.data == null ||
               snapshot.data?.statusCode != (widget.successStatusCode ?? 200)) {
@@ -185,7 +185,7 @@ class _FutureListBuilderState<T> extends State<FutureListBuilder<T>> {
 
   Widget? loading(AsyncSnapshot<dynamic> snapshot) {
     if (items.isEmpty && snapshot.connectionState == ConnectionState.waiting) {
-      //No data loader
+      ///No data loader
       return loader();
     } else if (items.isNotEmpty) {
       return createList();
