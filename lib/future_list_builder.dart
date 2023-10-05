@@ -2,9 +2,94 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:future_list/util.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
+/// A Flutter widget that makes it easy to load and display a list of data from a future.
+///
+/// It takes care of all the boilerplate code, such as handling loading and error states,
+/// pagination, and rebuilding the list when the data changes.
+///
+/// To use FutureListBuilder, simply pass it a future that returns a list of data,
+/// and a converter function that converts each item in the list to a widget.
+/// FutureListBuilder will then take care of displaying the list of widgets.
+///
+/// FutureListBuilder also supports pagination. If you set the `pagination` property
+/// to `true`, FutureListBuilder will automatically load more data when the user
+/// reaches the bottom of the list.
+///
+/// Here is an example of how to use FutureListBuilder to display a list of users:
+///
+/// ```dart
+/// import 'package:flutter/material.dart';
+/// import 'package:future_list/future_list_builder.dart';
+///
+/// class MyApp extends StatelessWidget {
+///   @override
+///   Widget build(BuildContext context) {
+///     return MaterialApp(
+///       home: Scaffold(
+///         appBar: AppBar(
+///           title: Text('Future List Builder Example'),
+///         ),
+///         body: FutureListBuilder<User>(
+///           url: 'https://api.github.com/users',
+///           httpMethod: HttpMethod.get,
+///           converter: (user) => ListTile(
+///             title: Text(user.name),
+///             subtitle: Text(user.login),
+///           ),
+///           itemBuilder: (context, user) => user,
+///         ),
+///       ),
+///     );
+///   }
+/// }
+///
+/// class User {
+///   final String name;
+///   final String login;
+///
+///   User(this.name, this.login);
+///
+///   factory User.fromJson(Map<String, dynamic> json) {
+///     return User(json['name'], json['login']);
+///   }
+/// }
+/// ```
+///
+/// This example will display a list of users, with each user represented by a ListTile widget.
+/// The name and login of the user will be displayed in the title and subtitle of the
+/// ListTile widget, respectively.
+///
+/// You can customize the FutureListBuilder widget by setting the following properties:
+///
+/// * `url`: The URL of the endpoint to fetch the data from.
+/// * `httpMethod`: The HTTP method to use to fetch the data.
+/// * `header`: A map of headers to send with the request.
+/// * `body`: A map of body parameters to send with the request.
+/// * `converter`: A function that converts each item in the list to a widget.
+/// * `itemBuilder`: A function that builds a widget for each item in the list.
+/// * `scrollDirection`: The direction in which the list scrolls.
+/// * `shimmerBuilder`: A function that builds a widget to display while the data is loading.
+/// * `shimmerCardsCount`: The number of shimmer cards to display while the data is loading.
+/// * `paginationShimmerCardsCount`: The number of shimmer cards to display when the user
+/// reaches the bottom of the list and is waiting for more data to load.
+/// * `onError`: A function that is called if an error occurs while fetching the data.
+/// * `callBack`: A function that is called after the data has been fetched and converted.
+/// * `pagination`: Whether to enable pagination.
+/// * `skipKey`: The name of the query parameter to use for the skip value in the
+/// pagination request.
+/// * `limitKey`: The name of the query parameter to use for the limit value in the
+/// pagination request.
+/// * `skip`: The initial skip value for the pagination request.
+/// * `limit`: The initial limit value for the pagination request.
+/// * `successStatusCode`: The HTTP status code that indicates success.
+///
+/// FutureListBuilder is a powerful and flexible widget that can be used to display a
+/// variety of data from a future. It is a good choice for any app that needs to
+/// display a list of data that is loaded from a remote server.
 class FutureListBuilder<T> extends StatefulWidget {
   const FutureListBuilder({
     super.key,
@@ -283,5 +368,3 @@ dynamic getValueFromJson(dynamic jsonObject, List<String> propertyPath) {
 
   return value;
 }
-
-enum HttpMethod { get, post, getWithBody }
