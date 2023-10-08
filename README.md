@@ -4,6 +4,13 @@ Future List is a powerful Flutter package that simplifies the process of display
 your Flutter applications. With Future List, you can effortlessly generate list views from a single
 URL, complete with automatic pagination, shimmer effects, and a range of advanced features.
 
+
+## Live demo
+
+<div   style="text-align:center">
+  <video height="350" src="https://github-production-user-asset-6210df.s3.amazonaws.com/70761777/273432578-8731a2aa-11fb-4997-8045-09e43d676de7.mp4"></video>
+</div>
+
 ## Features
 
 - **Effortless Pagination**: Future List takes care of pagination for you, automatically fetching
@@ -34,14 +41,7 @@ dependencies:
 import 'package:future_list/future_list_builder.dart';
 ```
 
-## Live demo 
-
-<video controls>
-  <source src="https://github-production-user-asset-6210df.s3.amazonaws.com/70761777/273432578-8731a2aa-11fb-4997-8045-09e43d676de7.mp4" type="video/mp4"  width=200 height=400 >
-</video>
-
 ## Examples
-
 
 ### Simple example
 
@@ -198,10 +198,7 @@ In this example the response body should be
 </figure>
 </p>
 
-
 ## Suggestions and Feedback
 
 We value your suggestions and feedback to enhance this project.</br>
 If you have any ideas, feature requests, bug reports, or general feedback, we would love to hear from you. Your input is important to us, and it helps us improve the project for everyone.
-
-
