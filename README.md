@@ -34,9 +34,13 @@ dependencies:
 import 'package:future_list/future_list_builder.dart';
 ```
 
-## Examples
+## Live demo 
 
-[Live demo](https://github-production-user-asset-6210df.s3.amazonaws.com/70761777/273432578-8731a2aa-11fb-4997-8045-09e43d676de7.mp4)
+<video controls>
+  <source src="https://github-production-user-asset-6210df.s3.amazonaws.com/70761777/273432578-8731a2aa-11fb-4997-8045-09e43d676de7.mp4" type="video/mp4"  width=200 height=400 >
+</video>
+
+## Examples
 
 
 ### Simple example
