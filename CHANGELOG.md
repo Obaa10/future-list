@@ -24,3 +24,9 @@ Update docs
 Add screenshots
 Add new attributes to shimmer card
 Add new attributes to future list builder
+
+## 1.0.5
+
+Update docs
+Add screen record
+Pub issue fixed
