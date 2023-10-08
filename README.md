@@ -178,20 +178,23 @@ In this example the response body should be
 
 <p float="left">
 <figure>
-<img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_1.png" width="200">
+<img src="https://raw.githubusercontent.com/Obaa10/future-list/main/media/screenshot_1.png" width="200">
 <figcaption>Fig.1 - Shimmer effect while get data.</figcaption>
 </figure>
 <figure>
-<img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_2.png" width="200">
+<img src="https://raw.githubusercontent.com/Obaa10/future-list/main/media/screenshot_2.png" width="200">
 <figcaption>Fig.2 - Show result After get data.</figcaption>
 </figure>
 <figure>
-<img src="https://github.com/Obaa10/future-list/blob/main/media/screenshot_3.png" width="200">
+<img src="https://raw.githubusercontent.com/Obaa10/future-list/main/media/screenshot_3.png" width="200">
 <figcaption>Fig.3 - Shimmer effect while pagination.</figcaption>
 </figure>
 </p>
 
 
-## If you need any features suggest
+## Suggestions and Feedback
 
-...
+We value your suggestions and feedback to enhance this project.</br>
+If you have any ideas, feature requests, bug reports, or general feedback, we would love to hear from you. Your input is important to us, and it helps us improve the project for everyone.
+
+

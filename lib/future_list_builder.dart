@@ -36,11 +36,11 @@ import 'package:http/http.dart' as http;
 ///         body: FutureListBuilder<User>(
 ///           url: 'https://api.github.com/users',
 ///           httpMethod: HttpMethod.get,
-///           converter: (user) => ListTile(
+///           converter:  User.fromJson,
+///           itemBuilder: (context, user) => ListTile(
 ///             title: Text(user.name),
 ///             subtitle: Text(user.login),
 ///           ),
-///           itemBuilder: (context, user) => user,
 ///         ),
 ///       ),
 ///     );
@@ -69,7 +69,7 @@ import 'package:http/http.dart' as http;
 /// * `httpMethod`: The HTTP method to use to fetch the data.
 /// * `header`: A map of headers to send with the request.
 /// * `body`: A map of body parameters to send with the request.
-/// * `converter`: A function that converts each item in the list to a widget.
+/// * `converter`: A function that converts each item in the list from json to an object.
 /// * `itemBuilder`: A function that builds a widget for each item in the list.
 /// * `scrollDirection`: The direction in which the list scrolls.
 /// * `shimmerBuilder`: A function that builds a widget to display while the data is loading.
