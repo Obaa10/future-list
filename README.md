@@ -34,7 +34,7 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  future_list: ^1.0.4
+  future_list: ^1.0.5
 ```
 
 ```dart
