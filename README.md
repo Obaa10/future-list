@@ -36,6 +36,9 @@ import 'package:future_list/future_list_builder.dart';
 
 ## Examples
 
+[Live demo](https://github-production-user-asset-6210df.s3.amazonaws.com/70761777/273432578-8731a2aa-11fb-4997-8045-09e43d676de7.mp4)
+
+
 ### Simple example
 
 ```dart
@@ -189,10 +192,6 @@ In this example the response body should be
 <img src="https://raw.githubusercontent.com/Obaa10/future-list/main/media/screenshot_3.png" width="200">
 <figcaption>Fig.3 - Shimmer effect while pagination.</figcaption>
 </figure>
-
-[![Video Demo]]([https://www.youtube.com/watch?v=VIDEO_ID](https://github.com/Obaa10/future-list/assets/70761777/8731a2aa-11fb-4997-8045-09e43d676de7)https://github.com/Obaa10/future-list/assets/70761777/8731a2aa-11fb-4997-8045-09e43d676de7)
-
-
 </p>
 
 
