@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-
 /// A widget that displays a shimmer effect to represent loading content.
 
 ///
@@ -37,6 +36,7 @@ class ShimmerCard extends StatelessWidget {
 
   ///Card width
   final double width;
+
   ///Card height
   final double height;
   final bool fillWidth;

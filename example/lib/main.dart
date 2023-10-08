@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: FutureListBuilder<Art>(
             url: "https://api.artic.edu/api/v1/artworks",
-            httpMethod: HttpMethod. get,
+            httpMethod: HttpMethod.get,
             converter: Art.fromJson,
             itemBuilder: (data) => ArtCard(art: data),
             dataPath: const ['data'],
@@ -77,16 +77,20 @@ class ArtCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text("id: ${art.id.toString()}", style: const TextStyle(fontSize: 12)),
+              Text("id: ${art.id.toString()}",
+                  style: const TextStyle(fontSize: 12)),
               Text("disable data: ${art.dateDisplay}",
                   style: const TextStyle(fontSize: 12)),
             ],
           ),
           const SizedBox(height: 15),
-              const Text("artist display:",
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold,color: Colors.brown)),
-              const SizedBox(height: 3),
-              Text(art.artistDisplay, style: const TextStyle(fontSize: 15)),
+          const Text("artist display:",
+              style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.brown)),
+          const SizedBox(height: 3),
+          Text(art.artistDisplay, style: const TextStyle(fontSize: 15)),
         ],
       ),
     );
